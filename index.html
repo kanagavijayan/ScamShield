@@ -1,0 +1,2404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScamShield AI - Intelligent Scam & Fraud Protection</title>
+    <!-- Favicon & App Icons -->
+    <!-- Google Fonts -->
+    <!-- Main Stylesheet (Inline for Single-File Preview) -->
+    <style>
+/* ==========================================================================
+   ScamShield AI - Main Stylesheet
+   Theme: Hack4Hack Inspired Pure Solid Black (#000000) & Electric Lime (No Glow / No Motion)
+   ========================================================================== */
+
+/* --- CSS Variables & Theme Tokens --- */
+:root {
+    --bg-dark: #000000;
+    --bg-surface: #0a0a0a;
+    --bg-surface-elevated: #111111;
+    --bg-card: #0d0d0d;
+    --border-color: #1f1f1f;
+    --border-hover: #bfff00;
+
+    /* Accent & Brand Colors (Hack4Hack Electric Lime) */
+    --primary: #bfff00;
+    --primary-hover: #d2ff33;
+    --primary-gradient: #bfff00;
+    --secondary-gradient: #bfff00;
+    
+    /* Semantic Colors */
+    --danger: #ef4444;
+    --danger-bg: #160b0b;
+    --warning: #f59e0b;
+    --warning-bg: #171209;
+    --success: #22c55e;
+    --success-bg: #0a150e;
+
+    /* Typography & Text */
+    --text-main: #f5f5f5;
+    --text-muted: #9ca3af;
+    --text-dim: #6b7280;
+    --font-heading: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+
+    /* Shadow & Effects (Zero Glow) */
+    --shadow-sm: none;
+    --shadow-lg: none;
+    --glow-primary: none;
+    --glow-danger: none;
+
+    /* Transitions */
+    --transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+/* --- Base & Reset --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: #000000;
+}
+
+body {
+    background-color: #000000;
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Completely Disable Animated & Glowing Background Elements --- */
+.cyber-bg-wrapper,
+.cyber-canvas,
+.cyber-ambient-orb,
+.orb-cyan,
+.orb-amber,
+.orb-purple,
+.cyber-grid-mesh,
+.cyber-scanner-beam,
+.hero-glow {
+    display: none !important;
+    opacity: 0 !important;
+    animation: none !important;
+    background: none !important;
+    pointer-events: none !important;
+}
+
+/* --- Container Utility --- */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* --- Announcements Top Bar (Flat Dark Banner) --- */
+.top-announcement {
+    background: #0d0d0d;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    padding: 0.65rem 0;
+    position: relative;
+    z-index: 10;
+    color: #a3a3a3;
+}
+
+.announcement-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.badge-pulse {
+    background: #1a1a1a;
+    color: var(--primary);
+    border: 1px solid #333333;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.55rem;
+    border-radius: 6px;
+    animation: none !important;
+}
+
+.announcement-link {
+    background: var(--primary);
+    color: #000000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 6px;
+    transition: var(--transition);
+    margin-left: 0.25rem;
+}
+
+.announcement-link:hover {
+    background: var(--primary-hover);
+}
+
+/* --- Navbar (Pure Pitch-Black Top Bar) --- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #000000;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.9rem 0;
+    transition: var(--transition);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+/* Neon Lime Rounded Square Icon like "H4" logo */
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: none !important;
+}
+
+.logo-icon img,
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.brand-logo:hover .logo-icon {
+    background: var(--primary-hover);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #ffffff;
+}
+
+.ai-pill {
+    background: #141414;
+    color: var(--primary);
+    border: 1px solid #2a2a2a;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+.logo-tag {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.85rem;
+}
+
+.nav-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-main);
+    transition: var(--transition);
+}
+
+/* --- Buttons (Solid Lime & Matte Dark Bordered Buttons, No Glow) --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.35rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: var(--transition);
+    font-family: inherit;
+    box-shadow: none !important;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+    border-radius: 7px;
+}
+
+.btn-lg {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    border-radius: 8px;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #000000;
+    font-weight: 700;
+    border: 1px solid var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background: #0d0d0d;
+    color: #f5f5f5;
+    border: 1px solid #262626;
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background: #161616;
+    border-color: #3a3a3a;
+}
+
+.btn-outline {
+    background: #0a0a0a;
+    color: #a3a3a3;
+    border: 1px solid #262626;
+}
+
+.btn-outline:hover {
+    color: #ffffff;
+    border-color: #404040;
+    background: #141414;
+}
+
+/* --- Hero Section (Pure Black Background & Static Layout) --- */
+.hero-section {
+    position: relative;
+    background-color: #000000;
+    padding: 5.5rem 0 5rem;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.35rem 0.85rem;
+    background: #0d0d0d;
+    border: 1px solid #262626;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    color: #d4d4d8;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.sparkle {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--primary);
+    text-shadow: none !important;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    line-height: 1.08;
+    font-weight: 800;
+    margin-bottom: 1.35rem;
+    letter-spacing: -0.035em;
+    color: #ffffff;
+}
+
+.gradient-text {
+    display: block;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: var(--primary);
+    color: var(--primary);
+}
+
+.hero-description {
+    font-size: 1.05rem;
+    color: #8e9299;
+    margin-bottom: 2rem;
+    max-width: 560px;
+    line-height: 1.65;
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+    font-family: var(--font-mono);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #71717a;
+    font-weight: 500;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border-color);
+}
+
+/* Static Shield Card Visual (No Floating Motion, No Radial Glow) */
+.hero-visual {
+    position: relative;
+}
+
+.floating-shield-card {
+    position: relative;
+    background: #0a0a0a;
+    border: 1px solid #242424;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: none !important;
+    animation: none !important;
+}
+
+.shield-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    color: #d4d4d8;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.1rem;
+}
+
+.shield-header-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    flex-shrink: 0;
+    box-shadow: none !important;
+}
+
+.shield-header-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: none !important;
+    margin-left: auto;
+}
+
+.mock-alert-box {
+    display: flex;
+    gap: 0.9rem;
+    padding: 0.95rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 0.85rem;
+    border: 1px solid #222222;
+    background: #111111;
+}
+
+.mock-alert-box.danger {
+    border-color: #3f1d1d;
+    background: #140c0c;
+}
+
+.mock-alert-box.safe {
+    border-color: #2c3a12;
+    background: #0f130a;
+}
+
+.alert-icon {
+    font-size: 1.35rem;
+}
+
+.alert-details strong {
+    display: block;
+    font-size: 0.92rem;
+    color: #ffffff;
+    margin-bottom: 0.15rem;
+}
+
+.alert-details p {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-bottom: 0.5rem;
+}
+
+.threat-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    background: #291414;
+    color: #fca5a5;
+    border: 1px solid #522121;
+    padding: 0.12rem 0.5rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+}
+
+.safe-tag {
+    background: var(--primary);
+    color: #000000;
+    border-color: var(--primary);
+}
+
+.ai-metrics-mini {
+    background: #050505;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.78rem;
+    margin-top: 1rem;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+    color: #8e9299;
+}
+
+.metric-val {
+    font-weight: 700;
+    color: #ffffff;
+    font-family: var(--font-mono);
+}
+
+.text-success {
+    color: var(--primary) !important;
+}
+
+/* --- Section Headers --- */
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.sub-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+    background: #0d0d0d;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid #262626;
+    margin-bottom: 0.9rem;
+}
+
+.section-title {
+    font-size: 2.35rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: #8e9299;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+/* --- Detector Section --- */
+.detector-section {
+    position: relative;
+    z-index: 1;
+    background-color: #000000;
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detector-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.detector-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.15rem;
+    background: #0a0a0a;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: #8e9299;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tab-btn:hover {
+    color: #ffffff;
+    border-color: #333333;
+    background: #121212;
+}
+
+.tab-btn.active {
+    background: var(--primary);
+    color: #000000;
+    border-color: var(--primary);
+    font-weight: 700;
+}
+
+.detector-card {
+    background: #0a0a0a;
+    border: 1px solid #222222;
+    border-radius: 14px;
+    padding: 1.85rem;
+    box-shadow: none !important;
+}
+
+.quick-samples {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.samples-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin-right: 0.25rem;
+}
+
+.sample-chip {
+    background: #111111;
+    border: 1px solid #262626;
+    color: #a1a1aa;
+    font-size: 0.76rem;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.sample-chip:hover {
+    background: #181818;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.sample-chip.safe-chip:hover {
+    background: #111a14;
+    color: #4ade80;
+    border-color: #22c55e;
+}
+
+.input-area textarea {
+    width: 100%;
+    background: #050505;
+    border: 1px solid #242424;
+    border-radius: 10px;
+    padding: 1.15rem;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    resize: vertical;
+    transition: var(--transition);
+    outline: none;
+    box-shadow: none !important;
+}
+
+.input-area textarea:focus {
+    border-color: var(--primary);
+}
+
+.input-area textarea::placeholder {
+    color: #52525b;
+}
+
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.char-count {
+    font-size: 0.78rem;
+    color: #6b7280;
+    font-family: var(--font-mono);
+}
+
+.btn-group {
+    display: flex;
+    gap: 0.65rem;
+}
+
+/* Spinner */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    border-top-color: #000000;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Scan Progress Animation */
+.scan-progress-box {
+    margin-top: 1.5rem;
+    padding: 1.15rem;
+    background: #050505;
+    border-radius: 10px;
+    border: 1px solid #222222;
+}
+
+.progress-bar-track {
+    width: 100%;
+    height: 6px;
+    background: #1a1a1a;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 0.65rem;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    border-radius: 9999px;
+    transition: width 0.25s ease;
+}
+
+.progress-status-text {
+    font-size: 0.82rem;
+    color: var(--primary);
+    font-family: var(--font-mono);
+}
+
+/* Detection Result Container */
+.result-box {
+    margin-top: 1.75rem;
+    padding: 1.65rem;
+    background: #050505;
+    border-radius: 12px;
+    border: 1px solid #262626;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid #1f1f1f;
+    margin-bottom: 1.15rem;
+}
+
+.verdict-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.verdict-icon {
+    font-size: 1.85rem;
+}
+
+.verdict-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.risk-score-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 12px;
+    background: #0d0d0d;
+    border: 2px solid var(--danger);
+    box-shadow: none !important;
+}
+
+.score-value {
+    font-size: 1.35rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+}
+
+.score-label {
+    font-size: 0.62rem;
+    color: #71717a;
+    text-transform: uppercase;
+}
+
+.result-summary {
+    font-size: 0.95rem;
+    color: #e4e4e7;
+    line-height: 1.6;
+    margin-bottom: 1.35rem;
+    padding: 0.9rem 1rem;
+    background: #0d0d0d;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary);
+}
+
+.red-flags-section {
+    margin-bottom: 1.35rem;
+}
+
+.red-flags-section h4, .recommendation-box h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8e9299;
+}
+
+.flags-list, .rec-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.flags-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: #fca5a5;
+    background: #140c0c;
+    padding: 0.55rem 0.85rem;
+    border-radius: 6px;
+    border: 1px solid #381a1a;
+}
+
+.recommendation-box {
+    background: #0d0d0d;
+    border: 1px solid #262626;
+    border-radius: 10px;
+    padding: 1.15rem;
+}
+
+.recommendation-box h4 {
+    color: var(--primary);
+}
+
+.rec-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: #e4e4e7;
+    padding: 0.3rem 0;
+}
+
+/* High / Moderate / Safe Color Classes for Result */
+.risk-high {
+    border-color: var(--danger) !important;
+}
+.risk-high .verdict-title {
+    color: var(--danger);
+}
+.risk-high .risk-score-circle {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.risk-moderate {
+    border-color: var(--warning) !important;
+}
+.risk-moderate .verdict-title {
+    color: var(--warning);
+}
+.risk-moderate .risk-score-circle {
+    border-color: var(--warning);
+    color: var(--warning);
+}
+
+.risk-safe {
+    border-color: var(--primary) !important;
+}
+.risk-safe .verdict-title {
+    color: var(--primary);
+}
+.risk-safe .risk-score-circle {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+.risk-safe .flags-list li {
+    color: #d9f99d;
+    background: #0f1409;
+    border-color: #283614;
+}
+
+/* --- How It Works Section --- */
+.how-section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+    background-color: #000000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.step-card {
+    background: #0a0a0a;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 2rem 1.65rem;
+    position: relative;
+    transition: var(--transition);
+}
+
+.step-card:hover {
+    border-color: var(--border-hover);
+}
+
+.step-num {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1f1f1f;
+    font-family: var(--font-mono);
+}
+
+.step-icon {
+    font-size: 2rem;
+    margin-bottom: 1.1rem;
+}
+
+.step-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: #ffffff;
+}
+
+.step-card p {
+    font-size: 0.9rem;
+    color: #8e9299;
+    line-height: 1.6;
+}
+
+/* --- Features Section --- */
+.features-section {
+    position: relative;
+    z-index: 1;
+    background-color: #000000;
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.feature-card {
+    background: #0a0a0a;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.85rem;
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    border-color: var(--border-hover);
+}
+
+.feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.15rem;
+    border: 1px solid #262626;
+}
+
+.bg-cyan, .bg-purple, .bg-emerald, .bg-amber, .bg-rose, .bg-blue {
+    background: #111111;
+    color: var(--primary);
+}
+
+.feature-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: #ffffff;
+}
+
+.feature-card p {
+    font-size: 0.88rem;
+    color: #8e9299;
+    line-height: 1.6;
+}
+
+/* --- Radar Section --- */
+.radar-section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+    background-color: #000000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.radar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.radar-card {
+    background: #0a0a0a;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.85rem;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.radar-card:hover {
+    border-color: #333333;
+}
+
+.radar-status {
+    align-self: flex-start;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-bottom: 1.1rem;
+    font-family: var(--font-mono);
+}
+
+.radar-status.high {
+    background: #1a1408;
+    color: #fbbf24;
+    border: 1px solid #42300b;
+}
+
+.radar-status.critical {
+    background: #1c0c0c;
+    color: #f87171;
+    border: 1px solid #451818;
+}
+
+.radar-status.moderate {
+    background: #121709;
+    color: var(--primary);
+    border: 1px solid #2e3b14;
+}
+
+.radar-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+.radar-desc {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    background: #050505;
+    border: 1px solid #1a1a1a;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-style: italic;
+    margin-bottom: 1.1rem;
+}
+
+.radar-trap {
+    font-size: 0.84rem;
+    color: #d4d4d8;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.radar-trap strong {
+    color: #f87171;
+}
+
+.radar-defense {
+    margin-top: auto;
+    font-size: 0.82rem;
+    color: #d9f99d;
+    background: #0d0d0d;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #262626;
+}
+
+/* --- Report Section --- */
+.report-section {
+    position: relative;
+    z-index: 1;
+    background-color: #000000;
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.report-box {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 3rem;
+    background: #0a0a0a;
+    border: 1px solid #242424;
+    border-radius: 18px;
+    padding: 3rem;
+    box-shadow: none !important;
+}
+
+.report-left h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.9rem;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+}
+
+.report-left p {
+    color: #8e9299;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+}
+
+.helpline-banner {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    background: #111111;
+    border: 1px solid #262626;
+    border-radius: 10px;
+    padding: 1.1rem;
+}
+
+.helpline-icon {
+    font-size: 1.65rem;
+}
+
+.helpline-banner strong {
+    display: block;
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-bottom: 0.15rem;
+}
+
+.helpline-banner p {
+    margin-bottom: 0;
+    font-size: 0.82rem;
+    color: #a1a1aa;
+}
+
+.helpline-banner a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #a1a1aa;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    background: #050505;
+    border: 1px solid #262626;
+    border-radius: 8px;
+    padding: 0.75rem 0.95rem;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    transition: var(--transition);
+    box-shadow: none !important;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--primary);
+}
+
+.alert-success {
+    background: #0f1409;
+    border: 1px solid #283614;
+    color: var(--primary);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* --- FAQ Section --- */
+.faq-section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+    background-color: #000000;
+}
+
+.faq-accordion {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.faq-item {
+    background: #0a0a0a;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    border-color: #303030;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.15rem 1.4rem;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.98rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.faq-arrow {
+    font-size: 1.35rem;
+    color: var(--primary);
+    transition: transform 0.2s ease;
+}
+
+.faq-item.active .faq-arrow {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    padding: 0 1.4rem;
+    color: #8e9299;
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 280px;
+    padding: 0 1.4rem 1.2rem 1.4rem;
+}
+
+/* --- Footer (Pure Black Minimalist Footer) --- */
+.footer {
+    position: relative;
+    z-index: 1;
+    background: #000000;
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 0 1.75rem;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1.2fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #191919;
+}
+
+.footer-text {
+    color: #8e9299;
+    font-size: 0.88rem;
+    margin: 0.9rem 0 1.25rem;
+    max-width: 320px;
+    line-height: 1.6;
+}
+
+.cyber-safety-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #d4d4d8;
+    background: #0d0d0d;
+    border: 1px solid #262626;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+}
+
+.footer-col h4 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 1.1rem;
+    color: #ffffff;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.footer-links a {
+    color: #8e9299;
+    text-decoration: none;
+    font-size: 0.86rem;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    font-size: 0.78rem;
+    color: #6b7280;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.bottom-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.bottom-links a {
+    color: #6b7280;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.bottom-links a:hover {
+    color: #d4d4d8;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2.75rem;
+    }
+
+    .hero-description {
+        margin: 0 auto 2rem;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .steps-grid, .features-grid, .radar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .report-box {
+        grid-template-columns: 1fr;
+        padding: 2.25rem 1.5rem;
+        gap: 2.25rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0a0a0a;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid #222222;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .steps-grid, .features-grid, .radar-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detector-tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        border-radius: 8px;
+    }
+
+    .detector-card {
+        border-radius: 12px;
+        padding: 1.25rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}
+
+/* Neutral verdict used when a phone number / UPI ID cannot be verified */
+.risk-unknown {
+    border-color: var(--primary) !important;
+}
+.risk-unknown .verdict-title {
+    color: var(--primary);
+}
+.risk-unknown .risk-score-circle {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+.risk-unknown .flags-list li {
+    color: #d9f99d;
+    background: #0f1409;
+    border-color: var(--primary);
+}
+    </style>
+</head>
+<body>
+    <!-- Animated Cybersecurity Background -->
+    <div class="cyber-bg-wrapper" aria-hidden="true">
+        <canvas id="cyberCanvas" class="cyber-canvas"></canvas>
+        <div class="cyber-ambient-orb orb-cyan"></div>
+        <div class="cyber-ambient-orb orb-amber"></div>
+        <div class="cyber-ambient-orb orb-purple"></div>
+        <div class="cyber-grid-mesh"></div>
+        <div class="cyber-scanner-beam"></div>
+    </div>
+
+    <!-- Top Alert Bar -->
+    <div class="top-announcement">
+        <div class="container announcement-content">
+            <span class="badge-pulse">ALERT</span>
+            <span>Trending Scam Alert: Beware of fake electricity bill & courier delivery SMS. Stay protected!</span>
+            <a href="#detector" class="announcement-link">Test your message &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">
+                    <img src="shield-icon-square.png" alt="ScamShield AI" class="logo-img">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">ScamShield<span class="ai-pill">AI</span></span>
+                    <span class="logo-tag">Cyber Defense</span>
+                </div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#features">Features</a>
+                <a href="#detector">AI Scanner</a>
+                <a href="#radar">Scam Radar</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#report">Report Scam</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#detector" class="btn btn-primary btn-sm">Scan Suspicious Text</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-glow"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="sparkle">✦</span> Rule-Based Fraud Detection, Right in Your Browser
+                </div>
+                <h1 class="hero-title">
+                    Stay One Step Ahead of <span class="gradient-text">Scammers & Cyber Frauds</span>
+                </h1>
+                <p class="hero-description">
+                    ScamShield AI instantly analyzes suspicious WhatsApp messages, SMS, phishing links, and fake bank warnings in real time. Get an instant safety score before you click or pay.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#detector" class="btn btn-primary btn-lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                        Try Live AI Scanner
+                    </a>
+                    <a href="#report" class="btn btn-secondary btn-lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        Report a Scam
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Fraud Signal Checks</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-card">
+                        <span class="stat-number">&lt; 1 Sec</span>
+                        <span class="stat-label">Real-time Analysis</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-card">
+                        <span class="stat-number">100% Free</span>
+                        <span class="stat-label">Privacy Protected</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="floating-shield-card">
+                    <div class="shield-header">
+                        <div class="shield-header-icon">
+                            <img src="shield-icon-square.png" alt="ScamShield AI">
+                        </div>
+                        <div class="status-indicator active"></div>
+                        <span>ScamShield Real-Time Engine Active</span>
+                    </div>
+                    <div class="mock-alert-box danger">
+                        <div class="alert-icon">⚠️</div>
+                        <div class="alert-details">
+                            <strong>Phishing Threat Blocked</strong>
+                            <p>Fake "Electricity Bill Disconnection" SMS detected</p>
+                            <span class="threat-tag">Risk Score: 96%</span>
+                        </div>
+                    </div>
+                    <div class="mock-alert-box safe">
+                        <div class="alert-icon">🛡️</div>
+                        <div class="alert-details">
+                            <strong>Official Bank Alert Verified</strong>
+                            <p>Genuine transaction OTP confirmation</p>
+                            <span class="threat-tag safe-tag">Safe: 0% Risk</span>
+                        </div>
+                    </div>
+                    <div class="ai-metrics-mini">
+                        <div class="metric-row">
+                            <span>Detection Method</span>
+                            <span class="metric-val">Keyword &amp; URL Rules</span>
+                        </div>
+                        <div class="metric-row">
+                            <span>Your Text Stays</span>
+                            <span class="metric-val text-success">On Your Device</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live AI Detector Section -->
+    <section class="detector-section" id="detector">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-badge">AI Interactive Demo</span>
+                <h2 class="section-title">Live Scam & Fraud Analyzer</h2>
+                <p class="section-subtitle">
+                    Paste any SMS, WhatsApp chat, email snippet, or suspicious URL below. ScamShield AI will dissect urgency triggers, fake links, and scam heuristics.
+                </p>
+            </div>
+
+            <div class="detector-wrapper">
+                <!-- Input Type Tabs -->
+                <div class="detector-tabs">
+                    <button class="tab-btn active" data-tab="message">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        Message / SMS / Chat
+                    </button>
+                    <button class="tab-btn" data-tab="url">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                        </svg>
+                        Website / URL Scanner
+                    </button>
+                    <button class="tab-btn" data-tab="upi">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <line x1="2" y1="10" x2="22" y2="10"/>
+                        </svg>
+                        Phone / UPI ID
+                    </button>
+                </div>
+
+                <div class="detector-card">
+                    <!-- Quick Samples Bar -->
+                    <div class="quick-samples">
+                        <span class="samples-title">Try real examples:</span>
+                        <button class="sample-chip" onclick="loadSample('electricity')">⚡ Electricity Bill Cut-off</button>
+                        <button class="sample-chip" onclick="loadSample('job')">💼 WFH Job Offer</button>
+                        <button class="sample-chip" onclick="loadSample('bank')">🏦 KYC Deactivation</button>
+                        <button class="sample-chip" onclick="loadSample('lottery')">🎁 Prize / Lottery Win</button>
+                        <button class="sample-chip safe-chip" onclick="loadSample('safe')">✅ Normal Friendly Chat</button>
+                    </div>
+
+                    <!-- Input Box -->
+                    <div class="input-area">
+                        <textarea id="scanInput" rows="5" placeholder="Paste the suspicious text, message, or link here... (e.g. 'Dear customer, your bank account is blocked today. Click here to update KYC...')"></textarea>
+                    </div>
+
+                    <div class="action-bar">
+                        <div class="char-count" id="charCount">0 characters</div>
+                        <div class="btn-group">
+                            <button class="btn btn-outline" id="clearBtn">Clear</button>
+                            <button class="btn btn-primary" id="scanBtn">
+                                <span class="btn-text">Analyze with ScamShield AI</span>
+                                <div class="spinner hidden" id="scanSpinner"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Scanning Progress Animation -->
+                    <div class="scan-progress-box hidden" id="scanProgressBox">
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" id="progressBarFill"></div>
+                        </div>
+                        <p class="progress-status-text" id="progressStatusText">Initialising AI Neural Network...</p>
+                    </div>
+
+                    <!-- Detection Result Container -->
+                    <div class="result-box hidden" id="resultBox">
+                        <div class="result-header">
+                            <div class="verdict-tag" id="verdictTag">
+                                <span class="verdict-icon" id="verdictIcon">⚠️</span>
+                                <span class="verdict-title" id="verdictTitle">High Risk Scam Detected</span>
+                            </div>
+                            <div class="risk-meter-container">
+                                <div class="risk-score-circle" id="riskScoreCircle">
+                                    <span class="score-value" id="scoreValue">92%</span>
+                                    <span class="score-label">Risk Level</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-summary" id="resultSummary">
+                            This message displays classic social engineering patterns designed to induce panic and force immediate action.
+                        </div>
+
+                        <!-- Detected Red Flags -->
+                        <div class="red-flags-section">
+                            <h4>Detected Red Flags & Heuristics:</h4>
+                            <ul class="flags-list" id="flagsList">
+                                <!-- Populated dynamically by JS -->
+                            </ul>
+                        </div>
+
+                        <!-- Safety Recommendations -->
+                        <div class="recommendation-box" id="recBox">
+                            <h4>🛡️ What you should do right now:</h4>
+                            <ul class="rec-list" id="recList">
+                                <!-- Populated dynamically by JS -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-section" id="how-it-works">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-badge">Simplicity & Speed</span>
+                <h2 class="section-title">How ScamShield AI Protects You</h2>
+                <p class="section-subtitle">Three straightforward steps to safeguard your money and digital identity.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <div class="step-icon">📋</div>
+                    <h3>Paste or Share</h3>
+                    <p>Copy any suspicious SMS, WhatsApp message, email, or unverified link directly into ScamShield AI.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <div class="step-icon">🧠</div>
+                    <h3>AI Deep Analysis</h3>
+                    <p>Our algorithms evaluate urgency psychology, brand impersonation, spoofed URLs, and fraudulent payment patterns.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <div class="step-icon">🛡️</div>
+                    <h3>Instant Verdict</h3>
+                    <p>Receive a clear danger score, a breakdown of why it's harmful, and immediate recommended safety actions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-badge">Full Spectrum Defense</span>
+                <h2 class="section-title">Comprehensive Anti-Fraud Capabilities</h2>
+                <p class="section-subtitle">Simple to understand, robust enough to block emerging AI-powered cyber crimes.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon bg-cyan">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>SMS & WhatsApp Phishing Shield</h3>
+                    <p>Identifies fake courier parcel updates, lottery rewards, and simulated bank debit notifications before you interact.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon bg-purple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3>Spoofed URL & Domain Scanner</h3>
+                    <p>Detects lookalike typosquatting domains (e.g. `sbl-bank.com` instead of `sbi.co.in`) and dangerous redirects.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon bg-emerald">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                            <line x1="1" y1="10" x2="23" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3>Fake KYC & Banking Trap Alert</h3>
+                    <p>Warns against malicious APK installation requests and fake customer support numbers claiming your account is blocked.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon bg-amber">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3>Work-From-Home Task Fraud Check</h3>
+                    <p>Flags typical "Like YouTube videos and earn ₹5,000/day" Ponzi and prepaid task fraud groups on Telegram.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon bg-rose">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Digital Arrest & Police Impersonation</h3>
+                    <p>Alerts against high-pressure fake police, CBI, or customs video calls demanding instant money transfers.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon bg-blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                    </div>
+                    <h3>Know Where to Report</h3>
+                    <p>Quick links to the 1930 cybercrime helpline and cybercrime.gov.in so you can report a scam to the authorities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scam Radar: Trending Threats -->
+    <section class="radar-section" id="radar">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-badge">Live Intelligence</span>
+                <h2 class="section-title">Trending Scam Radar</h2>
+                <p class="section-subtitle">Real scams reported this week. Learn the script so you never fall victim.</p>
+            </div>
+
+            <div class="radar-grid">
+                <div class="radar-card">
+                    <div class="radar-status high">HIGH VOLUME</div>
+                    <h3>⚡ Electricity Power Cut Notice</h3>
+                    <p class="radar-desc">
+                        "Dear Consumer, electricity power will be disconnected at 9:30 PM tonight due to unpaid previous bill. Call officer immediately."
+                    </p>
+                    <div class="radar-trap">
+                        <strong>The Trap:</strong> They ask you to download a remote-access app (AnyDesk/TeamViewer) or pay ₹10 via a fake link to steal your bank details.
+                    </div>
+                    <div class="radar-defense">
+                        <strong>ScamShield Tip:</strong> Electricity boards never send SMS from 10-digit personal mobile numbers!
+                    </div>
+                </div>
+
+                <div class="radar-card">
+                    <div class="radar-status critical">CRITICAL ALERT</div>
+                    <h3>👮 "Digital Arrest" & Fake Law Enforcement</h3>
+                    <p class="radar-desc">
+                        Scammers call pretending to be Police/CBI/Narcotics Bureau claiming your Aadhaar or mobile was found linked to illegal contraband or money laundering.
+                    </p>
+                    <div class="radar-trap">
+                        <strong>The Trap:</strong> They keep you on Skype/video call for hours, showing fake badges and demanding "security deposit" transfers.
+                    </div>
+                    <div class="radar-defense">
+                        <strong>ScamShield Tip:</strong> Real police or court never conduct arrests or investigations via Skype or WhatsApp video!
+                    </div>
+                </div>
+
+                <div class="radar-card">
+                    <div class="radar-status moderate">RISING THREAT</div>
+                    <h3>💼 Part-Time Job / Telegram Task Scam</h3>
+                    <p class="radar-desc">
+                        "Earn ₹3000-₹8000 daily by simply reviewing Google Maps locations or liking YouTube videos from home."
+                    </p>
+                    <div class="radar-trap">
+                        <strong>The Trap:</strong> They pay ₹150 first to build fake trust, then ask you to invest in "prepaid crypto tasks" where your funds get locked forever.
+                    </div>
+                    <div class="radar-defense">
+                        <strong>ScamShield Tip:</strong> Any job that requires YOU to pay money to get your earnings is 100% a fraud.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report a Scam Section -->
+    <section class="report-section" id="report">
+        <div class="container">
+            <div class="report-box">
+                <div class="report-left">
+                    <span class="sub-badge">Community First</span>
+                    <h2>Help Protect Others: Report a Scam</h2>
+                    <p>
+                        Encountered a new scam number, fraudulent website, or deceptive message? Note the details below, then report it officially so the authorities can act and others stay protected.
+                    </p>
+                    <div class="helpline-banner">
+                        <div class="helpline-icon">📞</div>
+                        <div>
+                            <strong>National Cybercrime Helpline:</strong>
+                            <p>Call <strong>1930</strong> (India). You can also report through the official National Cyber Crime Portal when internet access is available.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-right">
+                    <form id="scamReportForm" class="report-form">
+                        <div class="form-group">
+                            <label for="scamType">Scam Category</label>
+                            <select id="scamType" required>
+                                <option value="">Select Category</option>
+                                <option value="sms">SMS / WhatsApp Message Fraud</option>
+                                <option value="url">Phishing Website / Fake Bank Portal</option>
+                                <option value="job">Work-from-Home / Job Scam</option>
+                                <option value="call">Fake Police / Digital Arrest Threat</option>
+                                <option value="upi">UPI / QR Code Payment Trick</option>
+                                <option value="other">Other Fraudulent Activity</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="scamSender">Scammer Phone Number / URL / ID</label>
+                            <input type="text" id="scamSender" placeholder="+91 98765 43210 or scam-site.xyz" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="scamDetails">What Happened? (Scam Content / Script)</label>
+                            <textarea id="scamDetails" rows="4" placeholder="Describe what the scammer said, links they provided, or amount demanded..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" id="reportSubmitBtn">
+                            Submit Scam Report
+                        </button>
+
+                        <div id="reportSuccessMsg" class="alert-success hidden">
+                            ✅ Thank you! To make this report official, please also call 1930 or visit cybercrime.gov.in.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-badge">Clear Answers</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about ScamShield AI and staying safe online.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does ScamShield AI detect scams?</span>
+                        <span class="faq-arrow">&plus;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>ScamShield AI utilizes natural language heuristic analysis combined with a built-in set of known fraud indicators. It analyzes psychological pressure tactics (like artificial urgency, threats of legal action or account suspension), spoofed domain names, unverified shortlinks, and requests for OTPs or sensitive banking credentials.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is my scanned text or personal data saved?</span>
+                        <span class="faq-arrow">&plus;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. ScamShield AI prioritizes privacy. The live text analysis is processed client-side and in transient memory. We never sell, log, or associate your private messages with your personal identity.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What should I do if I accidentally clicked a scam link?</span>
+                        <span class="faq-arrow">&plus;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>1. Immediately disconnect your internet/Wi-Fi to prevent background payload execution. 2. Never enter OTPs or passwords. 3. If you entered bank details, immediately call your bank's official emergency helpline to freeze your debit card or net banking. 4. Run an antivirus scan on your mobile/PC.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is ScamShield AI completely free to use?</span>
+                        <span class="faq-arrow">&plus;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Our mission is to make online security accessible and simple for everyone, from students to senior citizens, without barriers or paywalls.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <div class="brand-logo">
+                    <div class="logo-icon">
+                        <img src="shield-icon-square.png" alt="ScamShield AI" class="logo-img">
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-title">ScamShield<span class="ai-pill">AI</span></span>
+                    </div>
+                </div>
+                <p class="footer-text">
+                    Simple, transparent AI fraud detection empowering internet users against digital deception and cyber attacks.
+                </p>
+                <div class="cyber-safety-pill">
+                    🛡️ Citizen Cybersecurity Initiative
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#detector">AI Scam Analyzer</a></li>
+                    <li><a href="#radar">Scam Radar Feed</a></li>
+                    <li><a href="#features">Security Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#report">Report Fraud</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Emergency Helplines</h4>
+                <ul class="footer-links">
+                    <li>📞 National Helpline: <strong>1930</strong></li>
+                    <li>🌐 National Cyber Crime Portal (official site; internet required)</li>
+                    <li>📱 Sanchar Saathi (Block Stolen Phone; internet required)</li>
+                    <li>🏦 RBI Kehta Hai Awareness (internet required)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container bottom-content">
+                <p>&copy; 2026 ScamShield AI. Developed for digital fraud awareness & safety education.</p>
+                <div class="bottom-links">
+                    <span>Privacy Policy</span>
+                    <span>Terms of Use</span>
+                    <span>Security Guidelines</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script (Inline for Single-File Preview) -->
+    <script>
+        // Set Hack4Hack-inspired electric lime square badge icon for shield-icon-square.png
+        const shieldSvgDataUri = "data:image/svg+xml;utf8," + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+                <rect width="64" height="64" rx="12" fill="#bfff00"/>
+                <path d="M32 11L15 18V30.5C15 42.2 22.3 52.6 32 56C41.7 52.6 49 42.2 49 30.5V18L32 11Z" fill="#000000"/>
+                <path d="M25 32.5L29.5 37L39.5 26.5" stroke="#bfff00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        `);
+
+        document.querySelectorAll('img[src="shield-icon-square.png"]').forEach(img => {
+            img.src = shieldSvgDataUri;
+        });
+
+        // 1. Background Canvas Motion Disabled (Pure Solid Black Background)
+        const canvas = document.getElementById('cyberCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            if (ctx) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        // 2. Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileToggle && navLinks) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+            });
+        }
+
+        // 3. Detector Tabs & Sample Loader
+        const scanInput = document.getElementById('scanInput');
+        const charCount = document.getElementById('charCount');
+        const clearBtn = document.getElementById('clearBtn');
+        const scanBtn = document.getElementById('scanBtn');
+        const scanSpinner = document.getElementById('scanSpinner');
+        const scanProgressBox = document.getElementById('scanProgressBox');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const progressStatusText = document.getElementById('progressStatusText');
+        const resultBox = document.getElementById('resultBox');
+
+        let currentTab = 'message';
+        const tabPlaceholders = {
+            message: "Paste the suspicious text, message, or link here... (e.g. 'Dear customer, your bank account is blocked today. Click here to update KYC...')",
+            url: "Enter a suspicious website link or URL... (e.g. 'http://sbi-kyc-update-online.xyz/login')",
+            upi: "Enter a suspicious Phone Number or UPI ID... (e.g. '+91 98765 43210' or 'refund.claim@okaxis')"
+        };
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTab = btn.getAttribute('data-tab');
+                if (scanInput) {
+                    scanInput.placeholder = tabPlaceholders[currentTab] || tabPlaceholders.message;
+                }
+            });
+        });
+
+        const sampleTexts = {
+            electricity: "URGENT: Dear Consumer, your Electricity power will be disconnected tonight at 9:30 PM from main office because your previous month bill was not updated. Please immediately contact our electricity officer at +91 8901234567 or click http://bescom-bill-pay.xyz",
+            job: "Congratulations! We are hiring for Part-Time Work From Home. Simply like YouTube videos and Google Maps reviews to earn ₹4,500 to ₹8,000 daily! No experience needed. Message our HR manager on Telegram now: https://t.me/fast_daily_payouts",
+            bank: "Dear HDFC Customer, your NetBanking and Account has been suspended today due to incomplete PAN/KYC verification. Update immediately at http://bit.ly/hdfc-kyc-verify-now or call 9811223344 to avoid permanent account freeze.",
+            lottery: "CONGRATULATIONS! Your mobile number has won ₹25,00,000 in the KBC Lucky Draw! To claim your prize money immediately into your bank account, send ₹4,500 processing fee via UPI to kbcwinner2026@ybl.",
+            safe: "Hey! Are we still meeting at the cafe around 5 PM today? Let me know when you leave home so I can head out too."
+        };
+
+        window.loadSample = function(type) {
+            if (!scanInput) return;
+            scanInput.value = sampleTexts[type] || '';
+            updateCharCount();
+            resultBox.classList.add('hidden');
+        };
+
+        function updateCharCount() {
+            if (scanInput && charCount) {
+                charCount.textContent = `${scanInput.value.length} characters`;
+            }
+        }
+
+        if (scanInput) {
+            scanInput.addEventListener('input', updateCharCount);
+        }
+
+        if (clearBtn) {
+            clearBtn.addEventListener('click', () => {
+                scanInput.value = '';
+                updateCharCount();
+                resultBox.classList.add('hidden');
+                scanProgressBox.classList.add('hidden');
+            });
+        }
+
+        // 4. Heuristic Scam Analysis Engine
+        if (scanBtn) {
+            scanBtn.addEventListener('click', () => {
+                const text = (scanInput.value || '').trim();
+                if (!text) {
+                    scanInput.focus();
+                    return;
+                }
+
+                resultBox.classList.add('hidden');
+                scanProgressBox.classList.remove('hidden');
+                scanSpinner.classList.remove('hidden');
+                progressBarFill.style.width = '15%';
+                progressStatusText.textContent = 'Initialising AI Neural Network...';
+
+                setTimeout(() => {
+                    progressBarFill.style.width = '55%';
+                    progressStatusText.textContent = 'Scanning urgency triggers, spoofed domains & payment traps...';
+                }, 250);
+
+                setTimeout(() => {
+                    progressBarFill.style.width = '100%';
+                    progressStatusText.textContent = 'Generating threat report...';
+                }, 550);
+
+                setTimeout(() => {
+                    scanProgressBox.classList.add('hidden');
+                    scanSpinner.classList.add('hidden');
+                    renderAnalysisResult(text);
+                }, 800);
+            });
+        }
+
+        function renderAnalysisResult(text) {
+            const lower = text.toLowerCase();
+            let score = 0;
+            const flags = [];
+            const recs = [];
+
+            if (/urgent|immediately|tonight|disconnected|suspended|blocked|freeze|24 hours/i.test(lower)) {
+                score += 32;
+                flags.push("⚠️ High-Pressure Urgency Tactic: Uses panic-inducing deadlines ('tonight', 'suspended', 'immediately') to rush you into acting.");
+            }
+            if (/kyc|pan|aadhaar|netbanking|otp|account|verify/i.test(lower)) {
+                score += 26;
+                flags.push("🏦 Banking / KYC Impersonation: Requests sensitive account updates or KYC verification via an unofficial channel.");
+            }
+            if (/http:\/\/|bit\.ly|\.xyz|\.top|t\.me|click|verify-now/i.test(lower)) {
+                score += 30;
+                flags.push("🔗 Suspicious / Unverified Link Detected: Contains a shortened, unencrypted, or lookalike domain often used in phishing.");
+            }
+            if (/earn|daily|youtube|telegram|part-time|wfh|lottery|won|prize|processing fee|kbc/i.test(lower)) {
+                score += 35;
+                flags.push("💸 Financial Lure / Advance-Fee Trap: Promises unrealistic daily income or lottery winnings to trick you into paying fees.");
+            }
+            if (/\+91\s?[6-9]\d{9}|\b[6-9]\d{9}\b|@[a-z]{3,}/i.test(lower)) {
+                score += 18;
+                flags.push("📱 Personal Contact / UPI Identifier: Directs you to call a personal 10-digit mobile number or transfer to an unverified UPI ID.");
+            }
+
+            score = Math.min(98, score);
+
+            const verdictIcon = document.getElementById('verdictIcon');
+            const verdictTitle = document.getElementById('verdictTitle');
+            const scoreValue = document.getElementById('scoreValue');
+            const resultSummary = document.getElementById('resultSummary');
+            const flagsList = document.getElementById('flagsList');
+            const recList = document.getElementById('recList');
+
+            resultBox.classList.remove('risk-high', 'risk-moderate', 'risk-safe', 'risk-unknown');
+
+            if (score >= 60) {
+                resultBox.classList.add('risk-high');
+                verdictIcon.textContent = '🚨';
+                verdictTitle.textContent = 'High Risk Scam Detected';
+                scoreValue.textContent = `${score}%`;
+                resultSummary.textContent = 'This content exhibits multiple high-severity fraud indicators designed to create panic or steal money and credentials.';
+                recs.push(
+                    '❌ Do NOT click any links, download APK files, or call the phone number mentioned.',
+                    '🔒 Never share your OTP, UPI PIN, or net-banking password with anyone.',
+                    '📞 Verify independently using the official website or customer care number on the back of your bank card.',
+                    '🛡️ Report this sender on the National Cybercrime Portal (cybercrime.gov.in) or call 1930.'
+                );
+            } else if (score >= 25) {
+                resultBox.classList.add('risk-moderate');
+                verdictIcon.textContent = '⚠️';
+                verdictTitle.textContent = 'Suspicious — Proceed with Caution';
+                scoreValue.textContent = `${score}%`;
+                resultSummary.textContent = 'This input contains warning signs commonly associated with spam, unverified senders, or social engineering.';
+                recs.push(
+                    '🧐 Double-check the sender identity through an official app or website before responding.',
+                    '🚫 Avoid making any advance UPI payments or clicking unfamiliar links.'
+                );
+            } else {
+                resultBox.classList.add('risk-safe');
+                verdictIcon.textContent = '✅';
+                verdictTitle.textContent = 'Low Risk / Looks Safe';
+                scoreValue.textContent = '4%';
+                resultSummary.textContent = 'No obvious phishing links, urgency traps, or known financial scam patterns were detected in this text.';
+                flags.push('✅ No malicious URLs, fake KYC threats, or advance-fee lures detected.');
+                recs.push(
+                    '👍 Stay vigilant: Even if a message looks normal, never share sensitive OTPs or banking PINs.'
+                );
+            }
+
+            flagsList.innerHTML = flags.map(f => `<li>${f}</li>`).join('');
+            recList.innerHTML = recs.map(r => `<li>${r}</li>`).join('');
+            resultBox.classList.remove('hidden');
+        }
+
+        // 5. FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                item.classList.toggle('active');
+            });
+        });
+
+        // 6. Report Form Submission
+        const scamReportForm = document.getElementById('scamReportForm');
+        const reportSuccessMsg = document.getElementById('reportSuccessMsg');
+        if (scamReportForm) {
+            scamReportForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const submitButton = document.getElementById('reportSubmitBtn');
+                const report = {
+                    category: document.getElementById('scamType').value,
+                    sender: document.getElementById('scamSender').value.trim(),
+                    details: document.getElementById('scamDetails').value.trim(),
+                    createdAt: new Date().toISOString()
+                };
+                if (!report.category || !report.sender || !report.details) return;
+                submitButton.disabled = true;
+                submitButton.textContent = 'Saving report...';
+                try {
+                    const response = await fetch('/api/reports', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(report)
+                    });
+                    if (!response.ok) throw new Error('Could not save report');
+                    if (reportSuccessMsg) {
+                        reportSuccessMsg.textContent = '✅ Report saved locally on this computer. This does not send it to the authorities. For an official report in India, call 1930 when appropriate.';
+                        reportSuccessMsg.classList.remove('hidden');
+                    }
+                    scamReportForm.reset();
+                } catch (error) {
+                    if (reportSuccessMsg) {
+                        reportSuccessMsg.textContent = 'Could not save the report. Please run this website using start_server.bat or python server.py.';
+                        reportSuccessMsg.classList.remove('hidden');
+                    }
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Scam Report';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
